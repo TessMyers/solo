@@ -1,0 +1,188 @@
+/*add a white border to everything*/
+
+body {
+  background-image: url(http://us.cdn3.123rf.com/168nwm/julietphotography/julietphotography1203/julietphotography120300014/12957657-dots-cream-blue-seamless-pattern.jpg);
+  font-family: impact;
+}
+
+h1 {
+  color: #2E1E20;
+  font-size: 64pt;
+  padding: 20px;
+  margin: 20px 0px 0px 150px;
+}
+
+h2 {
+  color: #F5DDB3;
+  font-size: 26pt;
+  letter-spacing: 2px;
+  text-shadow: 1px 0 #3B3031, 0 1px #3B3031, 1px 0 #3B3031, 0 1px #3B3031;
+}
+
+h3 {
+  font-size: 16pt;
+  color: #35BD9B;
+  letter-spacing: 2px;
+  text-shadow: 1px 0 #3B3031, 0 1px #3B3031, 1px 0 #3B3031, 0 1px #3B3031;
+}
+
+
+.circleText {
+  color: #F0E2C9;
+  margin-left: 220px;
+  margin-top: 50px;
+}
+
+.circleText2 {
+  color: #F0E2C9;
+  margin-left: 200px;
+  margin-top: 10px;
+}
+
+.boxText {
+  color: #F0E2C9;
+  text-align: center;
+  padding: 10px;
+}
+
+.clickMe {
+  background-color: #7F63A8;
+  height: 80px;
+  width: 350px;
+  border-radius: 30px;
+  margin-left: 85px;
+  display: inline-table;
+}
+
+
+.circle {
+  float: left;
+  height: 520px;
+  width: 520px;
+  margin: 10px 0px 0px 100px;
+  border-radius: 520px;
+  background-color: #2E1E20;
+  display: inline-block;
+}
+
+.circleStuff {
+  display: block;
+}
+
+.innerCircle {
+  background-color: #2E1E20;
+  float: left;
+  height: 520px;
+  width: 520px;
+  border-radius: 520px;
+}
+
+.container {
+  float: right;
+  height: 540px;
+  width: 400px;
+  margin-left: 0px;
+  margin-right: 220px;
+  margin-top: 55px;
+  display: inline-block;
+}
+
+.box {
+  height: 120px;
+  width: 350px;
+  margin: 13px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+
+.minForm {
+  padding:10px;
+  margin-top: 10px;
+  margin-left: 220px;
+  margin-bottom: 20px;
+}
+
+.minutes {
+  border: 5px solid #F0E2C9;
+  font-size: 26pt;
+  width: 50px;
+}
+
+.minutes:focus {
+  border: 5px solid #7F63A8;
+  outline: 0;
+}
+
+.taskForm {
+  margin-left: 20px;
+}
+
+.taskInput {
+  display: none;
+}
+
+.taskButton {
+  height: 30px;
+  width: 150px;
+  background-color: #A2C470;
+  border-radius: 5px;
+  margin-left: 90px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.taskInputText {
+  padding: 3px;
+}
+
+.suggestion {
+  background-color: #E6DED1;
+  border: 5px solid #35BD9B;
+  border-radius: 30px;
+  height: 180px;
+  width: 400px;
+  margin: 30px 30px 20px 50px;
+}
+
+.suggestionText {
+  text-align: center;
+  margin: 30px 0px 20px 0px;
+  padding: 5px;
+
+}
+
+.sugg {
+  display: none;
+}
+
+.reject {
+  background-color: grey;
+  height: 40px;
+  width:300px;
+  margin-left: 100px;
+  border-radius: 10px;
+
+}
+
+#topSugg {
+  margin-top: 80px
+}
+
+#clickMe {
+  text-align: center;
+  padding: 18px;
+}
+
+#top {
+  background-color: #4D6CA1;
+}
+
+#middle {
+  background-color: #C9A838;
+}
+
+#bottom {
+  background-color: #35BD9B;
+}
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>What Now?</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
+
+</head>
+<body>
+  <h1>What Now?</h1>
+
+  <div class="circle">
+
+      <h3 class="sugg suggestionText" id="topSugg">Why don't you:</h3>
+      <div class="sugg suggestion">
+      </div>
+      <div class="sugg reject">
+        <h3 class="sugg suggestionText">Nah, give me another one</h3>
+      </div>
+
+
+    <div class="innerCircle circleStuff">
+      <h2 class="circleText circleStuff"> I have </h2>
+      <form class="minForm circleStuff">
+        <input type="text" class="minutes circleStuff">
+      </form>
+      <h2 class="circleText2 circleStuff"> minutes </h2>
+      <div class="clickMe circleStuff">
+        <h2 class="circleStuff" id="clickMe">What should I do?</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="box" id='top'>
+      <h2 class="boxText"> Add Task </h2>
+        <div class="taskInput protect">
+          <form class="taskForm">
+              <h4 class="taskInput">Task description</h4>
+            <textarea type="text" class="taskInput" id="taskDescription" rows=3 cols=40></textarea>
+              <h4 class="taskInput taskInputText">Time estimate</h4>
+            <input type="text" class="taskInput" id="time" value="minutes">
+              <h4 class="taskInput taskInputText">Deadline?</h4>
+            <input type="date" class="taskInput" id="deadline">
+            <div class="taskInput taskButton">
+              <h4 class="taskInput taskInputText">Add task!</h4>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="box" id='middle'>
+      <h2 class="boxText"> See All </h2>
+    </div>
+    <div class="box" id='bottom'>
+      <h2 class="boxText"> ????? </h2>
+    </div>
+  </div>
+
+  <script src="bower_components/jquery/jquery.min.js"></script>
+  <script src="bower_components/underscore/underscore-min.js"></script>
+
+  <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
