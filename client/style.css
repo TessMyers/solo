@@ -10,6 +10,7 @@ h1 {
   font-size: 64pt;
   padding: 20px;
   margin: 20px 0px 0px 150px;
+  display: inline-block;
 }
 
 h2 {
@@ -26,6 +27,20 @@ h3 {
   text-shadow: 1px 0 #3B3031, 0 1px #3B3031, 1px 0 #3B3031, 0 1px #3B3031;
 }
 
+.auth {
+  height:100px;
+  width: 230px;
+  border-radius: 10px;
+  background-color: #7F63A8;
+  display: inline-block;
+  text-align: center;
+  margin-left: 30px;
+}
+
+.authButtons {
+  display: inline-block;
+  margin-left: 50px;
+}
 
 .circleText {
   color: #F0E2C9;
@@ -179,10 +194,10 @@ h3 {
 }
 
 #middle {
-  background-color: #C9A838;
+  background-color: #35BD9B;
 }
 
 #bottom {
-  background-color: #35BD9B;
+  background-color: #C9A838;
 }
 
