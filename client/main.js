@@ -32,15 +32,13 @@ var app = {
   getTask: function(time){
     app.pickOutTask(time, function(taskObj){
       if (app.flipped) {
-        console.log('flipped, so pushing to storage')
         app.storage.push(taskObj);
-        app.getAnother();
       } else {
         //flip circle
         $('.circleStuff').toggle();
         $('.sugg').toggle();
 
-        var task = "<h3 style='text-align: center;'>" + taskObj.task + "</h3>"
+        var task = "<h4 style='text-align: center;'>" + taskObj.task + "<p>" + "for " + taskObj.time + " minutes" + "</p>" + "</h4>";
 
         $('.suggestion').empty();
         $('.suggestion').append(task);
@@ -51,19 +49,27 @@ var app = {
   },
 
   getAnother: function(){
-    if (app.storage.length > 1) {
-      console.log('drawing from storage', app.storage)
+
+    if (app.storage.length >= 1) {
       // draw from the storage instead of getting more.
-      // need to account for asynchronicity FUCKSHITBALLS DICKS
-      var task = "<h3 style='text-align: center;'>" + app.storage.pop().task + "</h3>"
+      var taskObject = app.storage.pop();
+      var task = "<h4 style='text-align: center;'>" + taskObject.task + "<p>" + "for " + taskObject.time + " minutes" + "</p>" + "</h4>";
       $('.suggestion').empty();
       $('.suggestion').append(task);
     } else {
-      console.log('no storage, getting more')
+      // send a message to let the user know that they've gone thorugh all their tasks and now it will repeat.
+      // var msg = "<h4 style='text-align: center;'></h4>";
+      // $('.suggestion').empty();
+      // $('.suggestion').append(msg);
       app.done = false;
       app.getTask(app.time);
     }
   },
+
+  removeTask: function(task){
+    //query DB and take out indicated task.
+    // do this later, lazy pants
+  }
 
   addTask: function(){
     var task = {};
