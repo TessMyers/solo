@@ -5,8 +5,11 @@ var app = {
   time: 0,
 
   storage: [],
+
   // connect to new firebase Database
   fireBase: new Firebase('https://blinding-torch-85.firebaseio.com/').child('whatNowUsers'),
+
+  authenticated: false, // I'm pretty sure this is not needed
 
   init: function(){
     app.auth();
@@ -17,28 +20,35 @@ var app = {
     var authData = app.fireBase.getAuth();
 
     if (authData) {
-      console.log('its all good, you are signed in');
+      $('.auth').toggle();
+      $('.logout').toggle();
+      // put name here
+      console.log('its all good, you are signed in', authData.github.displayName);
     } else {
       console.log('no authData, loginRedirect');
+
       //prompt user to login
       if (!app.authenticated) {
 
-        app.fireBase.authWithOAuthRedirect("github", function(err, authData) {
+        //this is very definitely in the wrong place
+        $('.auth').toggle();
+        $('.login').toggle();
+        app.fireBase.authWithOAuthRedirect("github", function(err) {
           if (err) {
-            console.log('whoops there was an error', err);
+            console.log('whoops there was an error with github OAuth', err);
           } else {
-            console.log('redirect successful')
-            app.authenticated = authData.uid;
+            console.log('redirect successful');
+            app.authenticated = true;
           }
         })
 
       } else {
-        console.log('already redirected once, now I will stop fucking with you');
+        console.log('already redirected once, now I will stop messing with with you');
       }
+      console.log('will this ever print? ln 47');
     }
   },
 
-  authenticated: false,
 
   pickOutTask: function(time, callback) {
     // takes in time requirement and (eventually) whether deadlines are desired or not
@@ -53,7 +63,8 @@ var app = {
         }
       }
       if (!found) {
-        console.log("sorry, we were unable to find the right task. try yoga")
+        alert('Sorry, you do not have any tasks in your queue! Try adding some. Or try Yoga.');
+        console.log("sorry, we were unable to find the right task. try yoga");
         // then call something the deliver the news
       }
     });
@@ -100,14 +111,15 @@ var app = {
       // var msg = "<h4 style='text-align: center;'></h4>";
       // $('.suggestion').empty();
       // $('.suggestion').append(msg);
-      app.done = false;
+
+      // app.done = false;
       app.getTask(app.time);
     }
   },
 
   removeTask: function(task){
-    //query fireBase and take out indicated task.
-    // do this later, lazy pants
+     // query fireBase and take out indicated task.
+    // do this later, I'm lazy pants
   },
 
   addTask: function(){
@@ -120,8 +132,8 @@ var app = {
     task.time = $('#time').val();
     task.deadline = $('#deadline').val();
 
-    // push task data to Firebase database
-    var authData = app.fireBase.getAuth()
+    // get authData
+    var authData = app.fireBase.getAuth();
 
     if (authData) {
       // if child node for user does not exist, it is created. Then task is pushed in.
@@ -132,11 +144,12 @@ var app = {
     }
   },
 
-
   fetch: function(callback){
-    app.fireBase.child(app.authenticated).once('value', function(snapshot){
+    // get auth data
+    var authData = app.fireBase.getAuth();
+
+    app.fireBase.child(authData.uid).once('value', function(snapshot){
       // return an array of object results
-      console.log(snapshot.val());
       callback(snapshot.val());
     })
   },
@@ -179,7 +192,7 @@ $(document).ready(function(){
     $('.minutes').val('');
   })
 
-  //add task bindings
+  //addTask bindings
 
   $('#top').on('click', function(){
       app.toggleBox($(this));
@@ -196,14 +209,23 @@ $(document).ready(function(){
     app.toggleBox($('#top'));
   })
 
-  // auth buttons
+  // auth buttons that do exactly the same thing
 
   $('.login').on('click', function(){
     app.auth();
   })
 
   $('.signup').on('click', function(){
-    //
+    app.auth();
+  })
+
+  $('.logout').on('click', function(e){
+    e.preventDefault();
+    console.log('prevents default')
+    $('.logout').toggle();
+    $('.auth').toggle();
+    app.fireBase.unauth();
+    console.log('toggles done, unauthed')
   })
 
 
@@ -215,6 +237,7 @@ $(document).ready(function(){
   })
 
   $('#middle').on('click', function(){
+    console.log('this also does nothing yet');
   })
 
   $('#bottom').on('click', function(){
@@ -224,9 +247,6 @@ $(document).ready(function(){
   // initializing junk
 
   $('circleStuff').toggle();
-
-  console.log("changed auth scheme")
-
-  app.init();
+  $('.logout').toggle();
 
 });
